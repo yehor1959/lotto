@@ -10,14 +10,15 @@ import java.util.Set;
 @AllArgsConstructor
 public class WinningNumbersGeneratorFacade {
 
-    private final RandomNumberGenerable winningNumberGenerator;
+    private final RandomNumberGenerable randomNumberGenerable;
     private final WinningNumberValidator winningNumberValidator;
     private final WinningNumbersRepository winningNumbersRepository;
     private final NumberReceiverFacade numberReceiverFacade;
 
     public WinningNumbersDto generateWinningNumbers() {
         LocalDateTime nextDrawDate = numberReceiverFacade.retrieveNextDrawDate();
-        Set<Integer> winningNumbers = winningNumberGenerator.generateSixRandomNumbers();
+        SixRandomNumbersDto sixRandomNumbersDto = randomNumberGenerable.generateSixRandomNumbers();
+        Set<Integer> winningNumbers = sixRandomNumbersDto.numbers();
         winningNumberValidator.validate(winningNumbers);
         winningNumbersRepository.save(WinningNumbers.builder()
                 .winningNumbers(winningNumbers)
