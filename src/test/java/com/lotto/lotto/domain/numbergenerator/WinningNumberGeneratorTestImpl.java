@@ -10,12 +10,12 @@ public class WinningNumberGeneratorTestImpl implements RandomNumberGenerable {
         generatedNumbers = Set.of(1,2,3,4,5,6);
     }
 
-    public WinningNumberGeneratorTestImpl(Set<Integer> generatedNumbers) {
+    WinningNumberGeneratorTestImpl(Set<Integer> generatedNumbers) {
         this.generatedNumbers = generatedNumbers;
     }
 
     @Override
-    public SixRandomNumbersDto generateSixRandomNumbers() {
+    public SixRandomNumbersDto generateSixRandomNumbers(int count, int lowerBand, int upperBand) {
         return SixRandomNumbersDto.builder()
                 .numbers(generatedNumbers)
                 .build();
