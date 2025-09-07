@@ -17,16 +17,17 @@ public class WinningNumbersGeneratorFacade {
     private final WinningNumbersGeneratorFacadeConfigurationProperties properties;
 
     public WinningNumbersDto generateWinningNumbers() {
-        LocalDateTime nextDrawDate = numberReceiverFacade.retrieveNextDrawDate();
+//        LocalDateTime nextDrawDate = numberReceiverFacade.retrieveNextDrawDate();
         SixRandomNumbersDto sixRandomNumbersDto = randomNumberGenerable.generateSixRandomNumbers(properties.count(), properties.lowerBand(), properties.upperBand());
         Set<Integer> winningNumbers = sixRandomNumbersDto.numbers();
         winningNumberValidator.validate(winningNumbers);
         winningNumbersRepository.save(WinningNumbers.builder()
                 .winningNumbers(winningNumbers)
-                .date(nextDrawDate)
+                .date(LocalDateTime.now())
                 .build());
         return WinningNumbersDto.builder()
                 .winningNumbers(winningNumbers)
+                .date(LocalDateTime.now())
                 .build();
     }
 
