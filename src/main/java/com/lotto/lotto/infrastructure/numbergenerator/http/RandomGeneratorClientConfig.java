@@ -1,7 +1,7 @@
 package com.lotto.lotto.infrastructure.numbergenerator.http;
 
 import com.lotto.lotto.domain.numbergenerator.RandomNumberGenerable;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +10,10 @@ import org.springframework.web.client.RestTemplate;
 import java.time.Duration;
 
 @Configuration
+@AllArgsConstructor
 public class RandomGeneratorClientConfig {
+
+    private final RandomNumberGeneratorRestTemplateConfigurationProperties properties;
 
     @Bean
     public RestTemplateResponseErrorHandler restTemplateResponseErrorHandler() {
@@ -18,19 +21,15 @@ public class RandomGeneratorClientConfig {
     }
 
     @Bean
-    public RestTemplate restTemplate(@Value("${lotto.number-generator.http.client.config.connectionTimeout:1000}") long connectionTimeout,
-                                     @Value("${lotto.number-generator.http.client.config.readTimeout:1000}") long readTimeout,
-                                     RestTemplateResponseErrorHandler restTemplateResponseErrorHandler) {
+    public RestTemplate restTemplate(RestTemplateResponseErrorHandler restTemplateResponseErrorHandler) {
         return new RestTemplateBuilder()
                 .errorHandler(restTemplateResponseErrorHandler)
-                .setConnectTimeout(Duration.ofMillis(connectionTimeout))
-                .setReadTimeout(Duration.ofMillis(readTimeout))
+                .setConnectTimeout(Duration.ofMillis(properties.connectionTimeout()))
+                .setReadTimeout(Duration.ofMillis(properties.readTimeout()))
                 .build();
     }
 
-    public RandomNumberGenerable remoteNumberGeneratorClient(RestTemplate restTemplate,
-                                                             @Value("${lotto.number-generator.http.client.config.uri}") String uri,
-                                                             @Value("${lotto.number-generator.http.client.config.port}") int port) {
-        return new RandomNumberGeneratorRestTemplate(restTemplate, uri, port);
+    public RandomNumberGenerable remoteNumberGeneratorClient(RestTemplate restTemplate) {
+        return new RandomNumberGeneratorRestTemplate(restTemplate, properties.uri(), properties.port());
     }
 }
