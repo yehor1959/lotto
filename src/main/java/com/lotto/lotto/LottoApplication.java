@@ -5,9 +5,11 @@ import com.lotto.lotto.infrastructure.numbergenerator.http.RandomNumberGenerator
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableConfigurationProperties({WinningNumbersGeneratorFacadeConfigurationProperties.class, RandomNumberGeneratorRestTemplateConfigurationProperties.class})
+@EnableScheduling
 public class LottoApplication {
 
 	public static void main(String[] args) {
@@ -31,4 +33,12 @@ public class LottoApplication {
 //		aasdasd.save(new Ticket("asdasd"));
 //	}
 //
-//}
+//
+//
+//
+//
+//
+//
+//
+//
+//
