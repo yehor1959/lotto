@@ -27,7 +27,7 @@ public class WinningNumbersGeneratorFacade {
 //                .build());
         return WinningNumbersDto.builder()
                 .winningNumbers(winningNumbers)
-                .date(LocalDateTime.now())
+                .date(nextDrawDate)
                 .build();
     }
 
