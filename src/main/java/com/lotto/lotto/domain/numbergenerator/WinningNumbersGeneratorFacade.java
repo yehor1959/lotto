@@ -27,7 +27,7 @@ public class WinningNumbersGeneratorFacade {
                 .build();
         WinningNumbers savedNumbers = winningNumbersRepository.save(winningNumbersDocument);
         return WinningNumbersDto.builder()
-                .winningNumbers(winningNumbers)
+                .winningNumbers(savedNumbers.winningNumbers())
                 .date(savedNumbers.date())
                 .build();
     }

@@ -35,7 +35,7 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
         System.out.println(winningNumbersDto);
         // step 2: system fetched winning numbers for draw date
         // given
-        LocalDateTime drawDate = LocalDateTime.of(2023, 2, 25, 12, 0, 0);
+        LocalDateTime drawDate = LocalDateTime.of(2025, 11, 1, 12, 0, 0);
         // when
         await()
                 .atMost(Duration.ofSeconds(20))
@@ -48,11 +48,11 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
                     }
                 });
 
-        //step 2: WinningNumbersScheduler
+        //step 2: WinningNumbersRepository
         //step 2: WinningNumbersGeneratorFacade
         //step 2: WinningNumbersRepositoryTestImpl
-        //step 2: NumberGeneratorConfiguration
-        //step 2: WinningNumbers
+        //step 2:
+        //step 2:
         //step 2: LottoSpringBootApplication
         //step 2: WinningNumbersScheduler
         //step 2: system fetched winning numbers for draw date: 19.11.2022 12:00
