@@ -35,7 +35,7 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
         System.out.println(winningNumbersDto);
         // step 2: system fetched winning numbers for draw date
         // given
-        LocalDateTime drawDate = LocalDateTime.of(2025, 11, 1, 12, 0, 0);
+        LocalDateTime drawDate = LocalDateTime.of(2022, 11, 19, 12, 0, 0);
         // when
         await()
                 .atMost(Duration.ofSeconds(20))
@@ -48,16 +48,12 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
                     }
                 });
 
-        //step 2: WinningNumbersRepository
-        //step 2: WinningNumbersGeneratorFacade
-        //step 2: WinningNumbersRepositoryTestImpl
-        //step 2:
-        //step 2:
         //step 2: LottoSpringBootApplication
         //step 2: WinningNumbersScheduler
         //step 2: system fetched winning numbers for draw date: 19.11.2022 12:00
         //step 3: user made POST /inputNumbers with 6 numbers (1, 2, 3, 4, 5, 6) at 16-11-2022 10:00 and system returned OK(200) with message: “success” and Ticket (DrawDate:19.11.2022 12:00 (Saturday), TicketId: sampleTicketId)
         //step 4: 3 days and 1 minute passed, and it is 1 minute after the draw date (19.11.2022 12:01)
+        clock.plusDaysAndMinutes(3, 1);
         //step 5: system generated result for TicketId: sampleTicketId with draw date 19.11.2022 12:00, and saved it with 6 hits
         //step 6: 3 hours passed, and it is 1 minute after announcement time (19.11.2022 15:01)
         //step 7: user made GET /results/sampleTicketId and system returned 200 (OK)
