@@ -19,28 +19,3 @@ public class LottoApplication {
 	}
 
 }
-
-//@SpringBootApplication
-//public class LottoApplication implements CommandLineRunner {
-//
-//	@Autowired
-//	AsdadadRepository aasdasd;
-//
-//	public static void main(String[] args) {
-//		SpringApplication.run(LottoApplication.class, args);
-//	}
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
