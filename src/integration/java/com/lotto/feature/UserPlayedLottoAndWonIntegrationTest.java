@@ -58,11 +58,11 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
                 });
 
         //step 2: BaseIntegrationTest
-        //step 2: UserPlayedIntegrationTest
-        //step 2: InputNumbersRestController
-        //step 2: InputNumbersRequestDto
-        //step 2: BaseIntegrationTest
-        //step 2: BaseIntegrationTest
+        //step 2:
+        //step 2:
+        //step 2:
+        //step 2:
+        //step 2:
         //step 2:
         //step 2: LottoSpringBootApplication
         //step 2: WinningNumbersScheduler
@@ -88,7 +88,7 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
         );
         //step 4: 3 days and 1 minute passed, and it is 1 minute after the draw date (19.11.2022 12:01)
 
-//        clock.plusDaysAndMinutes(3, 1);
+        clock.plusDaysAndMinutes(3, 1);
 
         //step 5: system generated result for TicketId: sampleTicketId with draw date 19.11.2022 12:00, and saved it with 6 hits
         //step 6: 3 hours passed, and it is 1 minute after announcement time (19.11.2022 15:01)
