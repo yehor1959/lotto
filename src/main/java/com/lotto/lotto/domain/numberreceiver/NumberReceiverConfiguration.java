@@ -42,7 +42,7 @@ public class NumberReceiverConfiguration {
 
     @Bean
     NumberReceiverFacade numberReceiverFacade(HashGenerable hashGenerator, Clock clock, TicketRepository ticketRepository) {
-        NumberValidator numberValidator = new NumberValidator();
+        NumbersValidator numberValidator = new NumbersValidator();
         DrawDateGenerator drawDateGenerator = new DrawDateGenerator(clock);
         return new NumberReceiverFacade(numberValidator, drawDateGenerator, hashGenerator, ticketRepository);
     }

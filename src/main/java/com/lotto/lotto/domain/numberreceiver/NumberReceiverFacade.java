@@ -15,7 +15,7 @@ import static com.lotto.lotto.domain.numberreceiver.ValidationResult.INPUT_SUCCE
 @AllArgsConstructor
 public class NumberReceiverFacade {
 
-    private final NumberValidator numberValidator;
+    private final NumbersValidator numberValidator;
     private final DrawDateGenerator drawDateGenerator;
     private final HashGenerable hashGenerator;
     private final TicketRepository ticketRepository;
