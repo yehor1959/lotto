@@ -58,8 +58,8 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
                 });
 
         //step 2: BaseIntegrationTest
-        //step 2:
-        //step 2:
+        //step 2: pom.xml
+        //step 2: application.yml
         //step 2:
         //step 2:
         //step 2:

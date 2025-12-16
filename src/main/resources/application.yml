@@ -4,6 +4,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/lotto-web
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 lotto:
   number-generator:
