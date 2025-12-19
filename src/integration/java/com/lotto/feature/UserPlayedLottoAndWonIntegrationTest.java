@@ -16,7 +16,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.awaitility.Awaitility.await;
 
 import java.time.Duration;
@@ -58,15 +60,16 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
                 });
 
         //step 2: BaseIntegrationTest
-        //step 2: pom.xml
-        //step 2: application.yml
         //step 2:
+        //step 2:
+        //step 2: ResultAnnouncerRestController
         //step 2:
         //step 2:
         //step 2:
         //step 2: LottoSpringBootApplication
         //step 2: WinningNumbersScheduler
         //step 2: system fetched winning numbers for draw date: 19.11.2022 12:00
+
         //step 3: user made POST /inputNumbers with 6 numbers (1, 2, 3, 4, 5, 6) at 16-11-2022 10:00 and system returned OK(200) with message: “success” and Ticket (DrawDate:19.11.2022 12:00 (Saturday), TicketId: sampleTicketId)
         // given
         // when
@@ -81,12 +84,29 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
         MvcResult mvcResult = perform.andExpect(status().isOk()).andReturn();
         String json = mvcResult.getResponse().getContentAsString();
         NumberReceiverResponseDto numberReceiverResponseDto = objectMapper.readValue(json, NumberReceiverResponseDto.class);
+        String hash = numberReceiverResponseDto.ticketDto().hash();
         assertAll(
                 () -> assertThat(numberReceiverResponseDto.ticketDto().drawDate()).isEqualTo(drawDate),
-                () -> assertThat(numberReceiverResponseDto.ticketDto().hash()).isNotNull(),
+                () -> assertThat(hash).isNotNull(),
                 () -> assertThat(numberReceiverResponseDto.message()).isEqualTo("SUCCESS")
         );
-        //step 4: 3 days and 1 minute passed, and it is 1 minute after the draw date (19.11.2022 12:01)
+
+        //step 4: user made GET /results/notExistingId and system returned 404(NOT_FOUND) and body with (message: Not found for id: notExistingId and status NOT_FOUND)
+        // given
+        // when
+        ResultActions performGetResultsWithNotExistingId = mockMvc.perform(get("/results/notExistingId"));
+        // then
+        performGetResultsWithNotExistingId.andExpect(status().isNotFound())
+                .andExpect(content().json("""
+                        {
+                        "message": "Not found for id: notExistingId",
+                        "status": "NOT_FOUND"
+                        }
+                        """.trim()
+                ));
+
+
+        //step 4.1: 3 days and 1 minute passed, and it is 1 minute after the draw date (19.11.2022 12:01)
 
         clock.plusDaysAndMinutes(3, 1);
 
