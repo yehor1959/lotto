@@ -21,6 +21,10 @@ public class ResultCheckerFacade {
     PlayerRepository playerRepository;
     WinnersRetriever winnerGenerator;
 
+    public ResultCheckerFacade() {
+
+    }
+
     public PlayersDto generateWinners() {
         List<TicketDto> allTicketsByDate = numberReceiverFacade.retrieveAllTicketsByNextDrawDate();
         List<Ticket> tickets = ResultCheckerMapper.mapFromTicketDto(allTicketsByDate);

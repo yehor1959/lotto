@@ -62,12 +62,15 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
         //step 2: BaseIntegrationTest
         //step 2:
         //step 2:
-        //step 2: ResultAnnouncerRestController
         //step 2:
         //step 2:
         //step 2:
-        //step 2: LottoSpringBootApplication
+        //step 2:
+        //step 2:
+        //step 2: ResultAnnouncerFacade
+        //step 2:
         //step 2: WinningNumbersScheduler
+
         //step 2: system fetched winning numbers for draw date: 19.11.2022 12:00
 
         //step 3: user made POST /inputNumbers with 6 numbers (1, 2, 3, 4, 5, 6) at 16-11-2022 10:00 and system returned OK(200) with message: “success” and Ticket (DrawDate:19.11.2022 12:00 (Saturday), TicketId: sampleTicketId)
