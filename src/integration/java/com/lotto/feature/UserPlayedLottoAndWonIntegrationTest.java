@@ -65,10 +65,6 @@ public class UserPlayedLottoAndWonIntegrationTest extends BaseIntegrationTest {
         //step 2:
         //step 2:
         //step 2:
-        //step 2:
-        //step 2:
-        //step 2: ResultAnnouncerFacade
-        //step 2:
         //step 2: WinningNumbersScheduler
 
         //step 2: system fetched winning numbers for draw date: 19.11.2022 12:00
